@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".DesignerFingerActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="48dp"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/clear_button"
+                style="?android:attr/buttonBarButtonStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:text="@string/clear_button_string" />
+
+            <Button
+                android:id="@+id/save_button"
+                style="?android:attr/buttonBarButtonStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:text="@string/save_button_string" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <EditText
+                android:id="@+id/color_edit_text"
+                android:layout_width="100dp"
+                android:layout_height="match_parent"
+                android:layout_marginEnd="8dp"
+                android:gravity="center"
+                android:hint="@string/color_edit_text_string"
+                android:inputType="textNoSuggestions|text" />
+
+            <EditText
+                android:id="@+id/size_brush_edit_text"
+                android:layout_width="56dp"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:hint="@string/size_edit_text_string"
+                android:inputType="textNoSuggestions|number" />
+
+            <Button
+                android:id="@+id/set_configs_button"
+                style="?android:attr/buttonBarButtonStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:text="@string/set_button_string" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <com.example.damien.challengeandroidwear.designerfinger.DrawerView
+        android:id="@+id/drawer_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white" />
+
+</LinearLayout>
