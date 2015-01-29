@@ -14,7 +14,9 @@ import android.widget.ListView;
 
 import com.example.damien.challengeandroidwear.R;
 import com.example.damien.challengeandroidwear.searchinstagramtags.LazyImageLoader.ImageLoader;
-import com.google.android.gms.common.ConnectionResult;
+import com.example.damien.challengeandroidwear.searchinstagramtags.instagram.InstagramObject;
+import com.example.damien.challengeandroidwear.searchinstagramtags.instagram.InstagramParse;
+import com.example.damien.challengeandroidwear.searchinstagramtags.instagram.PaginationObject;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.wearable.Asset;
 import com.google.android.gms.wearable.DataApi;
@@ -32,44 +34,19 @@ import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.util.ArrayList;
 
-public class SearchTagsActivity extends Activity implements
-        GoogleApiClient.ConnectionCallbacks,
-        GoogleApiClient.OnConnectionFailedListener {
+public class SearchTagsActivity extends Activity {
 
     private static final String TAG = SearchTagsActivity.class.getSimpleName();
-
-    private static final int COUNT = 20;
-    private static final String CLIENT_ID = "da4641a8d7d94fa1b771cdd438143773";
-    private static final String TAGR = "fcporto";
-    private static final String WEARABLE_DATA_PATH = "/wearable_data";
     private static String REQUEST_URL = null;
-    private Button mConnectInstagram;
-    private ListView mListInstaObjects;
-    private CustomListAdapter mListAdapterObjects;
+
+    private Button mRequestButton;
+    private ListView mListView;
+    private CustomListAdapter mListAdapter;
     private GoogleApiClient mGoogleClient;
-
-    private String mActualPagination = "";
-    private ArrayList<InstaObject> importedObjects;
-
     private ProgressDialog mProgressDialog;
 
-    //convert bitmap to asset
-    private static Asset toAsset(Bitmap bitmap) {
-        ByteArrayOutputStream byteStream = null;
-        try {
-            byteStream = new ByteArrayOutputStream();
-            bitmap.compress(Bitmap.CompressFormat.PNG, 100, byteStream);
-            return Asset.createFromBytes(byteStream.toByteArray());
-        } finally {
-            if (null != byteStream) {
-                try {
-                    byteStream.close();
-                } catch (IOException e) {
-                    // ignore
-                }
-            }
-        }
-    }
+    private String actualPagination = "";
+    private ArrayList<InstagramObject> listImportedObjects;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -81,19 +58,17 @@ public class SearchTagsActivity extends Activity implements
 
         mGoogleClient = new GoogleApiClient.Builder(this)
                 .addApi(Wearable.API)
-                .addConnectionCallbacks(this)
-                .addOnConnectionFailedListener(this)
                 .build();
 
-        mListInstaObjects = (ListView) findViewById(R.id.scrollable_list_view);
-        mListInstaObjects.setOnScrollListener(new EndlessScroll());
-        mListInstaObjects.setOnItemClickListener(new OnItemClickObject());
+        mListView = (ListView) findViewById(R.id.scrollable_list_view);
+        mListView.setOnScrollListener(new EndlessScroll());
+        mListView.setOnItemClickListener(new OnItemClickObject());
 
-        mConnectInstagram = (Button) findViewById(R.id.connect_button);
-        mConnectInstagram.setOnClickListener(new OnClickConnectInstragram());
+        mRequestButton = (Button) findViewById(R.id.connect_button);
+        mRequestButton.setOnClickListener(new OnClickConnectInstragram());
 
-        REQUEST_URL = "https://api.instagram.com/v1/tags/" + TAGR +
-                "/media/recent?client_id=" + CLIENT_ID + "&count=" + COUNT;
+        REQUEST_URL = "https://api.instagram.com/v1/tags/" + SearchConstants.TAGR +
+                "/media/recent?client_id=" + SearchConstants.CLIENT_ID + "&count=" + SearchConstants.COUNT;
 
     }
 
@@ -105,47 +80,40 @@ public class SearchTagsActivity extends Activity implements
 
     @Override
     protected void onDestroy() {
-        mListAdapterObjects.imageLoader.clearCache();
-        mListInstaObjects.setAdapter(null);
+        mListView.setAdapter(null);
         mGoogleClient.disconnect();
         super.onDestroy();
     }
 
     @Override
-    public void onConnected(Bundle bundle) {
-
-    }
-
-    @Override
-    public void onConnectionSuspended(int i) {
-
-    }
-
-    @Override
-    public void onConnectionFailed(ConnectionResult connectionResult) {
-
-    }
-
-    private void loadListObjects(ArrayList<InstaObject> newlist) {
-        for (InstaObject aNewlist : newlist) {
-            importedObjects.add(aNewlist);
+    protected void onStop() {
+        if (null != mGoogleClient && mGoogleClient.isConnected()) {
+            mGoogleClient.disconnect();
         }
-        mListAdapterObjects.notifyDataSetChanged();
+        super.onStop();
+    }
+
+    private void loadListObjects(ArrayList<InstagramObject> newlist) {
+        for (InstagramObject aNewlist : newlist) {
+            listImportedObjects.add(aNewlist);
+        }
+        mListAdapter.notifyDataSetChanged();
         mProgressDialog.dismiss();
     }
 
     private class OnClickConnectInstragram implements View.OnClickListener {
         @Override
         public void onClick(View view) {
-            importedObjects = new ArrayList<>();
-            mListAdapterObjects = new CustomListAdapter(getApplicationContext(), importedObjects);
-            mListInstaObjects.setAdapter(mListAdapterObjects);
+            listImportedObjects = new ArrayList<>();
+            mListAdapter = new CustomListAdapter(getApplicationContext(), listImportedObjects);
+            mListView.setAdapter(mListAdapter);
             //Request from URL
             GetRequestItemsTask getItemsTask = new GetRequestItemsTask();
             getItemsTask.execute(REQUEST_URL);
         }
     }
 
+    //task to make connection and request parse
     private class GetRequestItemsTask extends AsyncTask<String, Void, String> {
         @Override
         protected void onPreExecute() {
@@ -165,6 +133,7 @@ public class SearchTagsActivity extends Activity implements
         }
     }
 
+    //parse instaobjects
     private class InstagramParserTask extends AsyncTask<String, Void, PaginationObject> {
         @Override
         protected PaginationObject doInBackground(String... strings) {
@@ -190,7 +159,8 @@ public class SearchTagsActivity extends Activity implements
         @Override
         protected void onPostExecute(PaginationObject instaObjHM) {
             super.onPostExecute(instaObjHM);
-            mActualPagination = instaObjHM.getNextURL();
+            //actualize url pagination and add new objects to list
+            actualPagination = instaObjHM.getNextURL();
             loadListObjects(instaObjHM.getListObjects());
         }
     }
@@ -202,7 +172,7 @@ public class SearchTagsActivity extends Activity implements
 
         @Override
         public void onScrollStateChanged(AbsListView absListView, int i) {
-
+            //nothing
         }
 
         @Override
@@ -225,7 +195,7 @@ public class SearchTagsActivity extends Activity implements
             if (!loading && (totalItemCount - visibleItemCount) <= (firstVisibleItem + 2)) {
                 loading = true;
                 GetRequestItemsTask getItemsTask = new GetRequestItemsTask();
-                getItemsTask.execute(mActualPagination);
+                getItemsTask.execute(actualPagination);
             }
         }
     }
@@ -236,9 +206,9 @@ public class SearchTagsActivity extends Activity implements
         public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
             DataMap dataMap = new DataMap();
 
-            String username = ((InstaObject) mListAdapterObjects.getItem(position)).getUsername();
-            String description = ((InstaObject) mListAdapterObjects.getItem(position)).getText();
-            String urlImage = ((InstaObject) mListAdapterObjects.getItem(position)).getImageURL();
+            String username = ((InstagramObject) mListAdapter.getItem(position)).getUsername();
+            String description = ((InstagramObject) mListAdapter.getItem(position)).getText();
+            String urlImage = ((InstagramObject) mListAdapter.getItem(position)).getImageURL();
 
             dataMap.putString("username", username);
             dataMap.putString("description", description);
@@ -248,7 +218,7 @@ public class SearchTagsActivity extends Activity implements
             Asset asset = toAsset(bitmap);
             dataMap.putAsset("url_image", asset);
 
-            SendToDataLayerTask sendToLayer = new SendToDataLayerTask(WEARABLE_DATA_PATH, dataMap);
+            SendToDataLayerTask sendToLayer = new SendToDataLayerTask(SearchConstants.WEARABLE_DATA_PATH, dataMap);
             sendToLayer.execute();
         }
     }
@@ -279,6 +249,24 @@ public class SearchTagsActivity extends Activity implements
                 }
             }
             return null;
+        }
+    }
+
+    //convert bitmap to asset
+    private Asset toAsset(Bitmap bitmap) {
+        ByteArrayOutputStream byteStream = null;
+        try {
+            byteStream = new ByteArrayOutputStream();
+            bitmap.compress(Bitmap.CompressFormat.PNG, 100, byteStream);
+            return Asset.createFromBytes(byteStream.toByteArray());
+        } finally {
+            if (null != byteStream) {
+                try {
+                    byteStream.close();
+                } catch (IOException e) {
+                    // ignore
+                }
+            }
         }
     }
 }

@@ -24,15 +24,14 @@ public class DesignerFingerActivity extends Activity {
     private static final String TAG = DesignerFingerActivity.class.getSimpleName();
 
     private DrawerView mDrawerView;
-
     private Button mClearButton;
     private Button mSaveButton;
     private EditText mColorEText;
     private EditText mSizeBrushEText;
     private Button mSetButton;
 
-    private String color = "";
-    private String sizeBrush = "";
+    private static String color = "";
+    private static String sizeBrush = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,6 +55,7 @@ public class DesignerFingerActivity extends Activity {
 
     }
 
+    //clear button
     private class OnClickClearButton implements View.OnClickListener {
         @Override
         public void onClick(View view) {
@@ -64,6 +64,7 @@ public class DesignerFingerActivity extends Activity {
         }
     }
 
+    //save button
     private class OnClickSaveButton implements View.OnClickListener {
         @Override
         public void onClick(View view) {
@@ -77,7 +78,6 @@ public class DesignerFingerActivity extends Activity {
 
             String imageName = "image" + UUID.randomUUID().toString() + ".png";
             File newFile = new File(newDir, imageName);
-
             try {
                 OutputStream out = new FileOutputStream(newFile);
                 Bitmap image = mDrawerView.getDrawingCache();
@@ -85,9 +85,6 @@ public class DesignerFingerActivity extends Activity {
                 out.flush();
                 out.close();
                 MediaStore.Images.Media.insertImage(getContentResolver(), newFile.getAbsolutePath(), newFile.getName(), newFile.getName());
-            } catch (FileNotFoundException e) {
-                Toast.makeText(getApplicationContext(), "Error: Image couldn't be saved. :S", Toast.LENGTH_LONG).show();
-                e.printStackTrace();
             } catch (IOException e) {
                 Toast.makeText(getApplicationContext(), "Error: Image couldn't be saved. :S", Toast.LENGTH_LONG).show();
                 e.printStackTrace();
@@ -99,12 +96,12 @@ public class DesignerFingerActivity extends Activity {
         }
     }
 
+    //reconfig color and sizebrush
     private class OnClickSetConfigs implements View.OnClickListener {
         @Override
         public void onClick(View view) {
             color = mColorEText.getText().toString();
             sizeBrush = mSizeBrushEText.getText().toString();
-
             mDrawerView.setConfigs(color, sizeBrush);
         }
     }

@@ -10,6 +10,7 @@ import android.widget.TextView;
 
 import com.example.damien.challengeandroidwear.R;
 import com.example.damien.challengeandroidwear.searchinstagramtags.LazyImageLoader.ImageLoader;
+import com.example.damien.challengeandroidwear.searchinstagramtags.instagram.InstagramObject;
 
 import java.util.ArrayList;
 
@@ -17,9 +18,9 @@ public class CustomListAdapter extends BaseAdapter {
 
     private static LayoutInflater inflater = null;
     ImageLoader imageLoader;
-    private ArrayList<InstaObject> listObjects;
+    private ArrayList<InstagramObject> listObjects;
 
-    public CustomListAdapter(Context context, ArrayList<InstaObject> importedObjects) {
+    public CustomListAdapter(Context context, ArrayList<InstagramObject> importedObjects) {
         this.listObjects = importedObjects;
         inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         imageLoader = new ImageLoader(context.getApplicationContext());
@@ -40,11 +41,12 @@ public class CustomListAdapter extends BaseAdapter {
         return i;
     }
 
+    //customview
     @Override
     public View getView(int i, View view, ViewGroup viewGroup) {
         View newView = view;
         if (view == null) {
-            newView = inflater.inflate(R.layout.show_object, null);
+            newView = inflater.inflate(R.layout.insta_obj_item, null);
         }
 
         ImageView image = (ImageView) newView.findViewById(R.id.image_obj);

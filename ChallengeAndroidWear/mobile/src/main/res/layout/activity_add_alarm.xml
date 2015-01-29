@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_marginEnd="@dimen/space_16"
+    android:layout_marginStart="@dimen/space_16"
+    android:orientation="vertical">
+
+    <TimePicker
+        android:id="@+id/alarm_time_picker"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginBottom="@dimen/space_8" />
+
+    <EditText
+        android:id="@+id/alarm_description_edit_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/description_string"
+        android:layout_marginBottom="@dimen/space_8"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/space_56"
+        android:gravity="end"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/cancel_alarm_button"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/space_56"
+            android:text="@string/cancel_button_string"
+            style="?android:attr/buttonBarButtonStyle"/>
+
+        <Button
+            android:id="@+id/add_alarm_button"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/space_56"
+            android:text="@string/add_button_string"
+            style="?android:attr/buttonBarButtonStyle"/>
+    </LinearLayout>
+
+</LinearLayout>

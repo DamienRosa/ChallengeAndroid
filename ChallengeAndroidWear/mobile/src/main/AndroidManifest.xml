@@ -5,10 +5,6 @@
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
-    <meta-data
-        android:name="com.google.android.gms.version"
-        android:value="@integer/google_play_services_version" />
-
     <application
         android:allowBackup="true"
         android:icon="@drawable/ic_launcher"
@@ -26,9 +22,15 @@
         <activity android:name=".searchinstagramtags.SearchTagsActivity" />
         <activity android:name=".freefeature.FreeFeatureActivity" />
         <activity android:name=".designerfinger.DesignerFingerActivity" />
+        <activity android:name=".freefeature.AddAlarmActivity" />
+
         <meta-data
             android:name="com.crashlytics.ApiKey"
             android:value="252486ea8b2331bd0aeb3ed06f8c678945a83db8" />
+
+        <meta-data
+            android:name="com.google.android.gms.version"
+            android:value="@integer/google_play_services_version" />
     </application>
 
 </manifest>

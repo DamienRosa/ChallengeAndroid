@@ -76,12 +76,12 @@ public class WearActivity extends Activity implements
 
     @Override
     public void onConnectionSuspended(int i) {
-
+        //nothing
     }
 
     @Override
     public void onConnectionFailed(ConnectionResult connectionResult) {
-
+        //nothing
     }
 
     @Override
@@ -116,15 +116,12 @@ public class WearActivity extends Activity implements
             throw new IllegalArgumentException("Asset must be non-null");
         }
 
-        InputStream assetInputStream = Wearable.DataApi.getFdForAsset(
-                mGoogleApiClient, asset).await().getInputStream();
-
+        InputStream assetInputStream = Wearable.DataApi.getFdForAsset(mGoogleApiClient, asset).await().getInputStream();
         if (assetInputStream == null) {
             Log.w(TAG, "Requested an unknown Asset.");
             return null;
         }
+
         return BitmapFactory.decodeStream(assetInputStream);
     }
-
-
 }
