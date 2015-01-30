@@ -1,0 +1,8 @@
+C:\Users\Damien\AndroidStudioProjects\ChallengeAndroidWear\wear\build\intermediates\classes\debug
+C:\Users\Damien\AndroidStudioProjects\ChallengeAndroidWear\wear\build\intermediates\pre-dexed\debug\support-annotations-21.0.0-e8108eeb31856fbb9e66ae92e08a70d8a3cfdd31.jar
+C:\Users\Damien\AndroidStudioProjects\ChallengeAndroidWear\wear\build\intermediates\pre-dexed\debug\classes-f1d365cc7120e03fc76c7615b63de36cf70c9490.jar
+C:\Users\Damien\AndroidStudioProjects\ChallengeAndroidWear\wear\build\intermediates\pre-dexed\debug\internal_impl-21.0.0-9444f54e6d2851010ae2d745237008de7f675a83.jar
+C:\Users\Damien\AndroidStudioProjects\ChallengeAndroidWear\wear\build\intermediates\pre-dexed\debug\classes-2ed80ad91a6320dce45eae95bc578990ad4fd5ec.jar
+C:\Users\Damien\AndroidStudioProjects\ChallengeAndroidWear\wear\build\intermediates\pre-dexed\debug\classes-5cae84fad529cfdeff0f326f325343109bf1b715.jar
+C:\Users\Damien\AndroidStudioProjects\ChallengeAndroidWear\wear\build\intermediates\pre-dexed\debug\classes-e122f18f5e4b33c0fd13e5113bf3d993bb52118b.jar
+C:\Users\Damien\AndroidStudioProjects\ChallengeAndroidWear\wear\build\intermediates\pre-dexed\debug\classes-167805c0230e7e82d224bc199b640656e1d15e11.jar

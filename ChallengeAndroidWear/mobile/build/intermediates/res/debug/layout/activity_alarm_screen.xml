@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/time_alarm_text_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <TextView
+        android:id="@+id/description_text_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <Button
+        android:id="@+id/snooze_alarm_button"
+        android:layout_width="@dimen/space_56"
+        android:layout_height="wrap_content"
+        android:text="Snooze" />
+
+    <Button
+        android:id="@+id/dismiss_alarm_button"
+        android:layout_width="@dimen/space_56"
+        android:layout_height="wrap_content"
+        android:text="Dismiss" />
+</LinearLayout><!-- From: file:/C:/Users/Damien/AndroidStudioProjects/ChallengeAndroidWear/mobile/src/main/res/layout/activity_alarm_screen.xml -->

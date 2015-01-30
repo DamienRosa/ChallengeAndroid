@@ -1,6 +1,7 @@
 package com.example.damien.challengeandroidwear.freefeature;
 
 import android.app.Activity;
+import android.content.ContextWrapper;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -14,12 +15,12 @@ import android.widget.Toast;
 import com.example.damien.challengeandroidwear.R;
 import com.example.damien.challengeandroidwear.freefeature.alarm.AlarmDataBase;
 import com.example.damien.challengeandroidwear.freefeature.alarm.AlarmListAdapter;
+import com.example.damien.challengeandroidwear.freefeature.alarm.AlarmManagerBroadcast;
 import com.example.damien.challengeandroidwear.freefeature.alarm.AlarmObject;
 import com.twitter.sdk.android.Twitter;
 import com.twitter.sdk.android.core.Callback;
 import com.twitter.sdk.android.core.Result;
 import com.twitter.sdk.android.core.TwitterAuthConfig;
-import com.twitter.sdk.android.core.TwitterAuthToken;
 import com.twitter.sdk.android.core.TwitterException;
 import com.twitter.sdk.android.core.TwitterSession;
 import com.twitter.sdk.android.core.identity.TwitterLoginButton;
@@ -34,7 +35,6 @@ public class FreeFeatureActivity extends Activity {
     private Button mAddAlarmButton;
     private ListView mAlarmListView;
     private AlarmListAdapter mAlarmListAdapter;
-    private Switch mEnableAlarm;
     private AlarmDataBase alarmDataBase;
 
     @Override
@@ -50,7 +50,6 @@ public class FreeFeatureActivity extends Activity {
 
         mTwitterLoginButton = (TwitterLoginButton) findViewById(R.id.twitter_login_button);
         mTwitterLoginButton.setCallback(new CallbackTwitter());
-        mTwitterLoginButton.setOnClickListener(new onClickLoginTwitter());
 
         mAddAlarmButton = (Button) findViewById(R.id.add_alarm_button);
         mAddAlarmButton.setOnClickListener(new OnClickNewAlarm());
@@ -63,14 +62,19 @@ public class FreeFeatureActivity extends Activity {
 
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if (requestCode == FreeFeatureConstants.REQUEST_ALARM  && data != null) {
+        if (requestCode == FreeFeatureConstants.REQUEST_ALARM && data != null) {
+            AlarmManagerBroadcast.cancelAlarms(this);
+
             int hour = data.getIntExtra("hour", 0);
             int minute = data.getIntExtra("minute", 0);
             String desc = data.getStringExtra("description");
-            AlarmObject alarm = new AlarmObject(hour, minute, desc, false);
+            AlarmObject alarm = new AlarmObject(hour, minute, desc, true);
             alarmDataBase.createAlarm(alarm);
             mAlarmListAdapter.setAlarms(alarmDataBase.getAlarms());
             mAlarmListAdapter.notifyDataSetChanged();
+
+            AlarmManagerBroadcast.setAlarms(this);
+
         } else if (requestCode == FreeFeatureConstants.REQUEST_CANCEL) {
             //nothing
         } else {
@@ -81,18 +85,29 @@ public class FreeFeatureActivity extends Activity {
 
     //delete alarm
     public void deleteAlarm(long l) {
+
+        AlarmManagerBroadcast.cancelAlarms(this);
+
         alarmDataBase.deleteAlarm(l);
         mAlarmListAdapter.setAlarms(alarmDataBase.getAlarms());
         mAlarmListAdapter.notifyDataSetChanged();
+
+        if (mAlarmListAdapter.getCount() != 0)
+            AlarmManagerBroadcast.setAlarms(this);
 
         Toast.makeText(this, "Alarm Deleted", Toast.LENGTH_LONG).show();
     }
 
     //set enable
     public void setAlarmEnabled(long l, boolean isChecked) {
+
+        AlarmManagerBroadcast.cancelAlarms(this);
+
         AlarmObject obj = alarmDataBase.getAlarm(l);
         obj.setEnable(isChecked);
         alarmDataBase.updateAlarm(obj);
+
+        AlarmManagerBroadcast.setAlarms(this);
     }
 
     private class CallbackTwitter extends Callback<TwitterSession> {
@@ -112,28 +127,11 @@ public class FreeFeatureActivity extends Activity {
         }
     }
 
-    private class onClickLoginTwitter implements View.OnClickListener {
-        @Override
-        public void onClick(View v) {
-            /*TweetComposer.Builder builder = new TweetComposer.Builder(getApplicationContext())
-                    .text("just setting up my Fabric.");
-            builder.show();*/
-        }
-    }
-
     private class OnClickNewAlarm implements View.OnClickListener {
         @Override
         public void onClick(View v) {
             Intent addAlarmIntent = new Intent(FreeFeatureActivity.this, AddAlarmActivity.class);
             startActivityForResult(addAlarmIntent, FreeFeatureConstants.REQUEST_ALARM);
-        }
-    }
-
-    private class onCheckAlarm implements CompoundButton.OnCheckedChangeListener {
-        @Override
-        public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-            if (isChecked) {
-            }
         }
     }
 }

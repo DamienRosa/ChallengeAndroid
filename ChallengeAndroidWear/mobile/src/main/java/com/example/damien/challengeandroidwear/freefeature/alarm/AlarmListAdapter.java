@@ -76,7 +76,7 @@ public class AlarmListAdapter extends BaseAdapter {
     private class onCheckSwitch implements CompoundButton.OnCheckedChangeListener {
         @Override
         public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-            ((FreeFeatureActivity) context).setAlarmEnabled(((Long) buttonView.getTag()).longValue(), isChecked);
+            ((FreeFeatureActivity) context).setAlarmEnabled((Long) buttonView.getTag(), isChecked);
         }
     }
 

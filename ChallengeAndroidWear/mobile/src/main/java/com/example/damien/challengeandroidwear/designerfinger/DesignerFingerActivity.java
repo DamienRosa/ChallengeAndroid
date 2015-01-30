@@ -13,7 +13,6 @@ import android.widget.Toast;
 import com.example.damien.challengeandroidwear.R;
 
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
@@ -22,16 +21,14 @@ import java.util.UUID;
 public class DesignerFingerActivity extends Activity {
 
     private static final String TAG = DesignerFingerActivity.class.getSimpleName();
-
+    private static String color = "";
+    private static String sizeBrush = "";
     private DrawerView mDrawerView;
     private Button mClearButton;
     private Button mSaveButton;
     private EditText mColorEText;
     private EditText mSizeBrushEText;
     private Button mSetButton;
-
-    private static String color = "";
-    private static String sizeBrush = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

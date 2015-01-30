@@ -1,0 +1,15 @@
+C:\Users\Damien\AndroidStudioProjects\ChallengeAndroidWear\mobile\build\intermediates\classes\debug
+C:\Users\Damien\AndroidStudioProjects\ChallengeAndroidWear\mobile\build\intermediates\pre-dexed\debug\support-annotations-21.0.3-6fcb6004d7503386a58e2b6493c2a29c9b30c789.jar
+C:\Users\Damien\AndroidStudioProjects\ChallengeAndroidWear\mobile\build\intermediates\pre-dexed\debug\classes-2ef9cd93d44499261caf900cdbef0592efc11e7e.jar
+C:\Users\Damien\AndroidStudioProjects\ChallengeAndroidWear\mobile\build\intermediates\pre-dexed\debug\classes-bd0449f038856dcec7ad5502aa7565863d17f5d3.jar
+C:\Users\Damien\AndroidStudioProjects\ChallengeAndroidWear\mobile\build\intermediates\pre-dexed\debug\classes-daf18da079388b451693322fc2ec8910f6311063.jar
+C:\Users\Damien\AndroidStudioProjects\ChallengeAndroidWear\mobile\build\intermediates\pre-dexed\debug\retrofit-1.6.1-e1e3a4830fcda61847094a751c9c2933d563e708.jar
+C:\Users\Damien\AndroidStudioProjects\ChallengeAndroidWear\mobile\build\intermediates\pre-dexed\debug\picasso-2.3.2-c78558f80e20ac1532e475269827abf09fdae871.jar
+C:\Users\Damien\AndroidStudioProjects\ChallengeAndroidWear\mobile\build\intermediates\pre-dexed\debug\classes-4e911d43fd2f88ef0f29097e9698f766e593e63a.jar
+C:\Users\Damien\AndroidStudioProjects\ChallengeAndroidWear\mobile\build\intermediates\pre-dexed\debug\classes-d50e34a89ba107d4ed49f0598badc6a21026c6de.jar
+C:\Users\Damien\AndroidStudioProjects\ChallengeAndroidWear\mobile\build\intermediates\pre-dexed\debug\gson-2.2.4-2a43ba40e7e6e33d7b50ae1df80c62f62865cb2f.jar
+C:\Users\Damien\AndroidStudioProjects\ChallengeAndroidWear\mobile\build\intermediates\pre-dexed\debug\internal_impl-21.0.3-81ec488801672174f73a3177c02f308e7be3872e.jar
+C:\Users\Damien\AndroidStudioProjects\ChallengeAndroidWear\mobile\build\intermediates\pre-dexed\debug\classes-4a5a4105438ce34b7d8ec1800f63df1d94c4730f.jar
+C:\Users\Damien\AndroidStudioProjects\ChallengeAndroidWear\mobile\build\intermediates\pre-dexed\debug\classes-8b187ce6af17690ca88a97cc3443940bf8f5320d.jar
+C:\Users\Damien\AndroidStudioProjects\ChallengeAndroidWear\mobile\build\intermediates\pre-dexed\debug\classes-da1f81c3b7c5484d7fb0f76b20dc22230176d536.jar
+C:\Users\Damien\AndroidStudioProjects\ChallengeAndroidWear\mobile\build\intermediates\pre-dexed\debug\classes-7887f64d49ad8bfca120f72f1d5b887206fb8938.jar

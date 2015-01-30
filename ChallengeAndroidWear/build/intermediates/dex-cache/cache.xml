@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items version="2" >
+
+    <item
+        jar="C:\Users\Damien\AndroidStudioProjects\ChallengeAndroidWear\wear\build\intermediates\exploded-aar\com.google.android.gms\play-services-base\6.5.87\classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="95482e7c792a7c0d5a9d5461e97726bd54fe9549">
+        <dex dex="C:\Users\Damien\AndroidStudioProjects\ChallengeAndroidWear\wear\build\intermediates\pre-dexed\debug\classes-167805c0230e7e82d224bc199b640656e1d15e11.jar" />
+    </item>
+    <item
+        jar="C:\Users\Damien\AppData\Local\Android\sdk\extras\android\m2repository\com\android\support\support-annotations\21.0.0\support-annotations-21.0.0.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="1a578b9607b36266c63d43a4fa0ab5664dbe911e">
+        <dex dex="C:\Users\Damien\AndroidStudioProjects\ChallengeAndroidWear\wear\build\intermediates\pre-dexed\debug\support-annotations-21.0.0-e8108eeb31856fbb9e66ae92e08a70d8a3cfdd31.jar" />
+    </item>
+    <item
+        jar="C:\Users\Damien\.gradle\caches\modules-2\files-2.1\com.squareup.retrofit\retrofit\1.6.1\efb0a36546aa8857ab8df358b106c1817e03cbee\retrofit-1.6.1.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="efb0a36546aa8857ab8df358b106c1817e03cbee">
+        <dex dex="C:\Users\Damien\AndroidStudioProjects\ChallengeAndroidWear\mobile\build\intermediates\pre-dexed\debug\retrofit-1.6.1-e1e3a4830fcda61847094a751c9c2933d563e708.jar" />
+    </item>
+    <item
+        jar="C:\Users\Damien\AndroidStudioProjects\ChallengeAndroidWear\wear\build\intermediates\exploded-aar\com.android.support\recyclerview-v7\21.0.0\classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="efeda77c808750cb670ee9c48d8a1835d89dbcb2">
+        <dex dex="C:\Users\Damien\AndroidStudioProjects\ChallengeAndroidWear\wear\build\intermediates\pre-dexed\debug\classes-5cae84fad529cfdeff0f326f325343109bf1b715.jar" />
+    </item>
+    <item
+        jar="C:\Users\Damien\AndroidStudioProjects\ChallengeAndroidWear\mobile\build\intermediates\exploded-aar\com.google.android.gms\play-services\6.5.87\classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="dd9247ea0fabe8ee479638c4b4a23e93752be256">
+        <dex dex="C:\Users\Damien\AndroidStudioProjects\ChallengeAndroidWear\mobile\build\intermediates\pre-dexed\debug\classes-7887f64d49ad8bfca120f72f1d5b887206fb8938.jar" />
+    </item>
+    <item
+        jar="C:\Users\Damien\AndroidStudioProjects\ChallengeAndroidWear\mobile\build\intermediates\exploded-aar\com.android.support\support-v4\21.0.3\libs\internal_impl-21.0.3.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="01ec05bfbafcc07646ba813000bf2ef11742dd03">
+        <dex dex="C:\Users\Damien\AndroidStudioProjects\ChallengeAndroidWear\mobile\build\intermediates\pre-dexed\debug\internal_impl-21.0.3-81ec488801672174f73a3177c02f308e7be3872e.jar" />
+    </item>
+    <item
+        jar="C:\Users\Damien\AndroidStudioProjects\ChallengeAndroidWear\mobile\build\intermediates\exploded-aar\io.fabric.sdk.android\fabric\1.1.0\classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="0bb0df3bf333801406f32bdfba678bcbd38cb9ff">
+        <dex dex="C:\Users\Damien\AndroidStudioProjects\ChallengeAndroidWear\mobile\build\intermediates\pre-dexed\debug\classes-4a5a4105438ce34b7d8ec1800f63df1d94c4730f.jar" />
+    </item>
+    <item
+        jar="C:\Users\Damien\.gradle\caches\modules-2\files-2.1\com.google.code.gson\gson\2.2.4\a60a5e993c98c864010053cb901b7eab25306568\gson-2.2.4.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="a60a5e993c98c864010053cb901b7eab25306568">
+        <dex dex="C:\Users\Damien\AndroidStudioProjects\ChallengeAndroidWear\mobile\build\intermediates\pre-dexed\debug\gson-2.2.4-2a43ba40e7e6e33d7b50ae1df80c62f62865cb2f.jar" />
+    </item>
+    <item
+        jar="C:\Users\Damien\AndroidStudioProjects\ChallengeAndroidWear\wear\build\intermediates\exploded-aar\com.android.support\support-v4\21.0.0\classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="686344a780033e4ba22b926cd225f8d4941247e6">
+        <dex dex="C:\Users\Damien\AndroidStudioProjects\ChallengeAndroidWear\wear\build\intermediates\pre-dexed\debug\classes-e122f18f5e4b33c0fd13e5113bf3d993bb52118b.jar" />
+    </item>
+    <item
+        jar="C:\Users\Damien\AndroidStudioProjects\ChallengeAndroidWear\wear\build\intermediates\exploded-aar\com.google.android.support\wearable\1.1.0\classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="27f19641b81b1078e653d2f0e5d1ed44d158a785">
+        <dex dex="C:\Users\Damien\AndroidStudioProjects\ChallengeAndroidWear\wear\build\intermediates\pre-dexed\debug\classes-2ed80ad91a6320dce45eae95bc578990ad4fd5ec.jar" />
+    </item>
+    <item
+        jar="C:\Users\Damien\AndroidStudioProjects\ChallengeAndroidWear\wear\build\intermediates\exploded-aar\com.google.android.gms\play-services-wearable\6.5.87\classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="6384c6cd674a22610b932d9464aa6938d067f285">
+        <dex dex="C:\Users\Damien\AndroidStudioProjects\ChallengeAndroidWear\wear\build\intermediates\pre-dexed\debug\classes-f1d365cc7120e03fc76c7615b63de36cf70c9490.jar" />
+    </item>
+    <item
+        jar="C:\Users\Damien\AndroidStudioProjects\ChallengeAndroidWear\mobile\build\intermediates\exploded-aar\com.android.support\support-v4\21.0.3\classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="2c91c949a45a21cdecf26e03951e46c7beec9ad8">
+        <dex dex="C:\Users\Damien\AndroidStudioProjects\ChallengeAndroidWear\mobile\build\intermediates\pre-dexed\debug\classes-da1f81c3b7c5484d7fb0f76b20dc22230176d536.jar" />
+    </item>
+    <item
+        jar="C:\Users\Damien\AndroidStudioProjects\ChallengeAndroidWear\mobile\build\intermediates\exploded-aar\com.twitter.sdk.android\twitter-core\1.1.1\classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="145ba6a0fca439b2280d1363753e7268e6a12e6f">
+        <dex dex="C:\Users\Damien\AndroidStudioProjects\ChallengeAndroidWear\mobile\build\intermediates\pre-dexed\debug\classes-d50e34a89ba107d4ed49f0598badc6a21026c6de.jar" />
+    </item>
+    <item
+        jar="C:\Users\Damien\AndroidStudioProjects\ChallengeAndroidWear\mobile\build\intermediates\exploded-aar\com.digits.sdk.android\digits\1.1.0\classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="e566c8c448420d730e72e0964d4d334606720e60">
+        <dex dex="C:\Users\Damien\AndroidStudioProjects\ChallengeAndroidWear\mobile\build\intermediates\pre-dexed\debug\classes-4e911d43fd2f88ef0f29097e9698f766e593e63a.jar" />
+    </item>
+    <item
+        jar="C:\Users\Damien\AndroidStudioProjects\ChallengeAndroidWear\mobile\build\intermediates\exploded-aar\com.twitter.sdk.android\twitter\1.1.1\classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="0eb65cff39b836d160f09684b3143bbe455762ac">
+        <dex dex="C:\Users\Damien\AndroidStudioProjects\ChallengeAndroidWear\mobile\build\intermediates\pre-dexed\debug\classes-2ef9cd93d44499261caf900cdbef0592efc11e7e.jar" />
+    </item>
+    <item
+        jar="C:\Users\Damien\.gradle\caches\modules-2\files-2.1\com.squareup.picasso\picasso\2.3.2\d6b7f0093cec6c9faf65dbfd6a6a345d0ed25e27\picasso-2.3.2.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="d6b7f0093cec6c9faf65dbfd6a6a345d0ed25e27">
+        <dex dex="C:\Users\Damien\AndroidStudioProjects\ChallengeAndroidWear\mobile\build\intermediates\pre-dexed\debug\picasso-2.3.2-c78558f80e20ac1532e475269827abf09fdae871.jar" />
+    </item>
+    <item
+        jar="C:\Users\Damien\AppData\Local\Android\sdk\extras\android\m2repository\com\android\support\support-annotations\21.0.3\support-annotations-21.0.3.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="4b74cefe1f0c1b819e7260c8627a14674e37fd35">
+        <dex dex="C:\Users\Damien\AndroidStudioProjects\ChallengeAndroidWear\mobile\build\intermediates\pre-dexed\debug\support-annotations-21.0.3-6fcb6004d7503386a58e2b6493c2a29c9b30c789.jar" />
+    </item>
+    <item
+        jar="C:\Users\Damien\AndroidStudioProjects\ChallengeAndroidWear\mobile\build\intermediates\exploded-aar\com.twitter.sdk.android\tweet-composer\0.7.2\classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="5838e4092c53ad68e8d0b996d899133c6446b4af">
+        <dex dex="C:\Users\Damien\AndroidStudioProjects\ChallengeAndroidWear\mobile\build\intermediates\pre-dexed\debug\classes-bd0449f038856dcec7ad5502aa7565863d17f5d3.jar" />
+    </item>
+    <item
+        jar="C:\Users\Damien\AndroidStudioProjects\ChallengeAndroidWear\mobile\build\intermediates\exploded-aar\com.twitter.sdk.android\tweet-ui\1.0.3\classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="ca562dfe312795be276130ced15da05478ac8a01">
+        <dex dex="C:\Users\Damien\AndroidStudioProjects\ChallengeAndroidWear\mobile\build\intermediates\pre-dexed\debug\classes-daf18da079388b451693322fc2ec8910f6311063.jar" />
+    </item>
+    <item
+        jar="C:\Users\Damien\AndroidStudioProjects\ChallengeAndroidWear\wear\build\intermediates\exploded-aar\com.android.support\support-v4\21.0.0\libs\internal_impl-21.0.0.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="1609e6d42d0480b0f4188e2c29f75388fa12a8f0">
+        <dex dex="C:\Users\Damien\AndroidStudioProjects\ChallengeAndroidWear\wear\build\intermediates\pre-dexed\debug\internal_impl-21.0.0-9444f54e6d2851010ae2d745237008de7f675a83.jar" />
+    </item>
+    <item
+        jar="C:\Users\Damien\AndroidStudioProjects\ChallengeAndroidWear\mobile\build\intermediates\exploded-aar\com.android.support\appcompat-v7\21.0.3\classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="81d42bf983a8741f4888a6e333e454e4a5e0eeb7">
+        <dex dex="C:\Users\Damien\AndroidStudioProjects\ChallengeAndroidWear\mobile\build\intermediates\pre-dexed\debug\classes-8b187ce6af17690ca88a97cc3443940bf8f5320d.jar" />
+    </item>
+
+</items>

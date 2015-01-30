@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical"
+    tools:context=".WearActivity"
+    tools:deviceIds="wear_square">
+
+    <ImageView
+        android:id="@+id/image_sent_image"
+        android:layout_width="56dp"
+        android:layout_height="56dp"
+        android:layout_gravity="center"
+        android:contentDescription="@string/image_obj" />
+
+    <TextView
+        android:id="@+id/username_sent_text_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <TextView
+        android:id="@+id/text_sent_text_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+</LinearLayout>
+<!-- From: file:/C:/Users/Damien/AndroidStudioProjects/ChallengeAndroidWear/wear/src/main/res/layout/rect_activity_wear.xml -->

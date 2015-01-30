@@ -11,6 +11,7 @@ import android.widget.AbsListView;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import com.example.damien.challengeandroidwear.R;
 import com.example.damien.challengeandroidwear.searchinstagramtags.LazyImageLoader.ImageLoader;
@@ -80,6 +81,7 @@ public class SearchTagsActivity extends Activity {
 
     @Override
     protected void onDestroy() {
+        mListAdapter.imageLoader.clearCache();
         mListView.setAdapter(null);
         mGoogleClient.disconnect();
         super.onDestroy();
@@ -99,6 +101,24 @@ public class SearchTagsActivity extends Activity {
         }
         mListAdapter.notifyDataSetChanged();
         mProgressDialog.dismiss();
+    }
+
+    //convert bitmap to asset
+    private Asset toAsset(Bitmap bitmap) {
+        ByteArrayOutputStream byteStream = null;
+        try {
+            byteStream = new ByteArrayOutputStream();
+            bitmap.compress(Bitmap.CompressFormat.PNG, 100, byteStream);
+            return Asset.createFromBytes(byteStream.toByteArray());
+        } finally {
+            if (null != byteStream) {
+                try {
+                    byteStream.close();
+                } catch (IOException e) {
+                    // ignore
+                }
+            }
+        }
     }
 
     private class OnClickConnectInstragram implements View.OnClickListener {
@@ -244,29 +264,12 @@ public class SearchTagsActivity extends Activity {
                 DataApi.DataItemResult result = Wearable.DataApi.putDataItem(mGoogleClient, putRequest).await();
                 if (result.getStatus().isSuccess()) {
                     Log.v(TAG, "Success sent to: " + node.getDisplayName());
+                    Toast.makeText(getBaseContext(), "Data Sent to Wearable", Toast.LENGTH_LONG).show();
                 } else {
                     Log.v(TAG, "ERROR: failed to send DataMap");
                 }
             }
             return null;
-        }
-    }
-
-    //convert bitmap to asset
-    private Asset toAsset(Bitmap bitmap) {
-        ByteArrayOutputStream byteStream = null;
-        try {
-            byteStream = new ByteArrayOutputStream();
-            bitmap.compress(Bitmap.CompressFormat.PNG, 100, byteStream);
-            return Asset.createFromBytes(byteStream.toByteArray());
-        } finally {
-            if (null != byteStream) {
-                try {
-                    byteStream.close();
-                } catch (IOException e) {
-                    // ignore
-                }
-            }
         }
     }
 }

@@ -3,6 +3,7 @@ package com.example.damien.challengeandroidwear.searchinstagramtags.instagram;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+
 import java.util.ArrayList;
 
 public class InstagramParse {

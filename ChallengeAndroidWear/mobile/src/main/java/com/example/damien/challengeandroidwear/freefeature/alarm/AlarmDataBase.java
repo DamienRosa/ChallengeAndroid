@@ -35,7 +35,7 @@ public class AlarmDataBase extends SQLiteOpenHelper {
         alarm.setDescription(c.getString(c.getColumnIndex(Alarm.COLUMN_NAME_ALARM_DESCRIPTION)));
         alarm.setHourOfDay(c.getInt(c.getColumnIndex(Alarm.COLUMN_NAME_ALARM_TIME_HOUR)));
         alarm.setMinute(c.getInt(c.getColumnIndex(Alarm.COLUMN_NAME_ALARM_TIME_MINUTE)));
-        alarm.setEnable(c.getInt(c.getColumnIndex(Alarm.COLUMN_NAME_ALARM_ENABLED)) != 0);
+        alarm.setEnable(c.getInt(c.getColumnIndex(Alarm.COLUMN_NAME_ALARM_ENABLED)) == 0 ? false : true);
         return alarm;
     }
 
@@ -94,6 +94,5 @@ public class AlarmDataBase extends SQLiteOpenHelper {
 
         return null;
     }
-
 
 }

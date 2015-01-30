@@ -27,34 +27,35 @@ public class AlarmObject {
         return hourOfDay;
     }
 
-    public int getMinute() {
-        return minute;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public boolean isEnable() {
-        return enable;
-    }
-
-    public void setID(long id) {
-        this.id = id;
-    }
-
     public void setHourOfDay(int hourOfDay) {
         this.hourOfDay = hourOfDay;
+    }
+
+    public int getMinute() {
+        return minute;
     }
 
     public void setMinute(int minute) {
         this.minute = minute;
     }
 
+    public String getDescription() {
+        return description;
+    }
+
     public void setDescription(String description) {
         this.description = description;
     }
 
+    public boolean isEnable() {
+        return enable;
+    }
+
     public void setEnable(boolean enable) {
+        this.enable = enable;
+    }
+
+    public void setID(long id) {
+        this.id = id;
     }
 }

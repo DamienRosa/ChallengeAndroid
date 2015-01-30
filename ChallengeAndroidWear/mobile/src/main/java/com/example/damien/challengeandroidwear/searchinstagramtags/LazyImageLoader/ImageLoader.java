@@ -10,6 +10,7 @@ import android.graphics.PorterDuffXfermode;
 import android.graphics.Rect;
 import android.graphics.RectF;
 import android.os.Handler;
+import android.util.Log;
 import android.widget.ImageView;
 
 import com.example.damien.challengeandroidwear.R;
@@ -31,6 +32,7 @@ import java.util.concurrent.Executors;
 
 public class ImageLoader {
 
+    private static final String TAG = ImageLoader.class.getSimpleName();
     final int stub_id = R.drawable.ic_warning_amber_24dp;
     MemoryCache memoryCache = new MemoryCache();
     FileCache fileCache;
@@ -152,6 +154,7 @@ public class ImageLoader {
     }
 
     public void clearCache() {
+        Log.i(TAG, "clear cache");
         memoryCache.clear();
         fileCache.clear();
     }
@@ -180,7 +183,7 @@ public class ImageLoader {
                 if (imageViewReused(photoToLoad))
                     return;
                 Bitmap bmp = getBitmap(photoToLoad.url);
-                memoryCache.put(photoToLoad.url, getRoundedCornerBitmap(bmp, bmp.getWidth()));
+                memoryCache.put(photoToLoad.url, getRoundedCornerBitmap(bmp, 36));
                 if (imageViewReused(photoToLoad))
                     return;
                 BitmapDisplayer bd = new BitmapDisplayer(getRoundedCornerBitmap(bmp, bmp.getWidth()), photoToLoad);

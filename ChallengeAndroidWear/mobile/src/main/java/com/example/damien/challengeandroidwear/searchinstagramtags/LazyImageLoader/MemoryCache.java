@@ -71,6 +71,7 @@ public class MemoryCache {
             //NullPointerException sometimes happen here http://code.google.com/p/osmdroid/issues/detail?id=78 
             cache.clear();
             size = 0;
+            Log.i(TAG, "MemoryCache Clear Cache!");
         } catch (NullPointerException ex) {
             ex.printStackTrace();
         }
