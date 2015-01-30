@@ -4,6 +4,7 @@ import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.wearable.Wearable;
 import com.google.android.gms.wearable.WearableListenerService;
 
+//listener
 public class WearListenerService extends WearableListenerService {
 
     private static final String TAG = WearListenerService.class.getSimpleName();

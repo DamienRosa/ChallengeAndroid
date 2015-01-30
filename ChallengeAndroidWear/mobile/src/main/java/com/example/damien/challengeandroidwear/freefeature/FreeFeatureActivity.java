@@ -53,7 +53,6 @@ public class FreeFeatureActivity extends Fragment implements AlarmListAdapter.Ad
         getActivity().setTitle(text);
 
         alarmDataBase = new AlarmDataBase(getActivity());
-
 /*
         mTwitterLoginButton = (TwitterLoginButton) rootView.findViewById(R.id.twitter_login_button);
         mTwitterLoginButton.setCallback(new CallbackTwitter());

@@ -33,6 +33,7 @@ public class AlarmWidgetProvider extends AppWidgetProvider {
         super.onDisabled(context);
     }
 
+    //enable widget
     @Override
     public void onEnabled(Context context) {
         super.onEnabled(context);
@@ -55,6 +56,7 @@ public class AlarmWidgetProvider extends AppWidgetProvider {
         alarmManager.setRepeating(AlarmManager.RTC_WAKEUP, System.currentTimeMillis() + 100 * 3, 1000, pendingIntent);
     }
 
+    //update infor for widget
     @Override
     public void onUpdate(Context context, AppWidgetManager appWidgetManager, int[] appWidgetIds) {
         ComponentName thisWidget = new ComponentName(context,

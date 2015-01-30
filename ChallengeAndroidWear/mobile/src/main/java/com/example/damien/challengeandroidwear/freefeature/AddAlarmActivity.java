@@ -35,6 +35,7 @@ public class AddAlarmActivity extends Activity {
         mCancelButton.setOnClickListener(new onClickCancel());
     }
 
+    //add alarm
     private class OnClickAdd implements View.OnClickListener {
         @Override
         public void onClick(View v) {
@@ -52,6 +53,7 @@ public class AddAlarmActivity extends Activity {
         }
     }
 
+    //cancel operation
     private class onClickCancel implements View.OnClickListener {
         @Override
         public void onClick(View v) {

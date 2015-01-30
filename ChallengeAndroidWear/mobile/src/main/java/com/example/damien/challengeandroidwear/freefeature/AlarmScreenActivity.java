@@ -81,6 +81,7 @@ public class AlarmScreenActivity extends Activity {
             e.printStackTrace();
         }
 
+        // Set the window to keep screen on
         Runnable releaseWakelock = new Runnable() {
             @Override
             public void run() {
@@ -120,12 +121,12 @@ public class AlarmScreenActivity extends Activity {
     @Override
     protected void onPause() {
         super.onPause();
-
         if (mWakeLock != null && mWakeLock.isHeld()) {
             mWakeLock.release();
         }
     }
 
+    //dismiss
     private class OnClickDismiss implements View.OnClickListener {
         @Override
         public void onClick(View v) {
@@ -134,6 +135,8 @@ public class AlarmScreenActivity extends Activity {
         }
     }
 
+    //snooze, assim que se clicasse no snooze, era enviado um tweet para a nossa conta
+    //a dizer que somos preguiçosos
     private class OnClickSnooze implements View.OnClickListener {
         @Override
         public void onClick(View v) {
