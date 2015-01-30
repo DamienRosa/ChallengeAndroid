@@ -2,13 +2,23 @@ package com.example.damien.challengeandroidwear.freefeature.alarm;
 
 import android.app.AlarmManager;
 import android.app.PendingIntent;
+import android.appwidget.AppWidgetManager;
 import android.content.BroadcastReceiver;
+import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
-import android.util.Log;
+import android.os.PowerManager;
+import android.os.PowerManager.WakeLock;
+import android.widget.RemoteViews;
 
+import com.example.damien.challengeandroidwear.R;
+import com.example.damien.challengeandroidwear.freefeature.AlarmWidgetProvider;
+
+import java.text.Format;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Date;
 
 public class AlarmManagerBroadcast extends BroadcastReceiver {
 
@@ -20,18 +30,19 @@ public class AlarmManagerBroadcast extends BroadcastReceiver {
         AlarmDataBase db = new AlarmDataBase(context);
 
         ArrayList<AlarmObject> alarms = db.getAlarms();
-        Log.d(TAG, String.valueOf(alarms.size()));
+
+        if (alarms == null) {
+            return;
+        }
         for (AlarmObject alarm : alarms) {
             if (alarm.isEnable()) {
                 PendingIntent pendingIntent = createPendingIntent(context, alarm);
 
                 Calendar calendar = Calendar.getInstance();
-                Calendar cc = Calendar.getInstance();
-                int day = calendar.get(Calendar.DAY_OF_WEEK);
-                calendar.set(Calendar.DAY_OF_WEEK, day);
+                calendar.set(Calendar.DAY_OF_WEEK, calendar.get(Calendar.DAY_OF_WEEK));
                 calendar.set(Calendar.HOUR_OF_DAY, alarm.getHourOfDay());
                 calendar.set(Calendar.MINUTE, alarm.getMinute());
-                calendar.set(Calendar.SECOND, 00);
+                calendar.set(Calendar.SECOND, 0);
 
                 //Find next time to set
                 final int nowDay = Calendar.getInstance().get(Calendar.DAY_OF_WEEK);
@@ -107,6 +118,35 @@ public class AlarmManagerBroadcast extends BroadcastReceiver {
     @Override
     public void onReceive(Context context, Intent intent) {
         setAlarms(context);
+
+        PowerManager powerManager = (PowerManager) context.getSystemService(Context.POWER_SERVICE);
+        WakeLock wakeLock = powerManager.newWakeLock(PowerManager.PARTIAL_WAKE_LOCK, "");
+        wakeLock.acquire();
+
+        RemoteViews remoteViews = new RemoteViews(context.getPackageName(), R.layout.alarm_widget_layout);
+        Format format = new SimpleDateFormat("kk:mm");
+        String time = format.format(new Date());
+        remoteViews.setTextViewText(R.id.time_text_view, time);
+
+        AlarmDataBase alarmDB = new AlarmDataBase(context);
+        ArrayList<AlarmObject> alarmsList = alarmDB.getAlarms();
+        if (alarmsList.size() >= 2){
+            remoteViews.setTextViewText(R.id.alarm1_text_view, alarmsList.get(0).toString());
+            remoteViews.setTextViewText(R.id.alarm2_text_view, alarmsList.get(1).toString());
+        } else if (alarmsList.size() == 1) {
+            remoteViews.setTextViewText(R.id.alarm1_text_view, alarmsList.get(0).toString());
+            remoteViews.setTextViewText(R.id.alarm2_text_view, "");
+        } else {
+            remoteViews.setTextViewText(R.id.alarm1_text_view, "");
+            remoteViews.setTextViewText(R.id.alarm2_text_view, "");
+        }
+
+        ComponentName widget = new ComponentName(context, AlarmWidgetProvider.class);
+        AppWidgetManager manager = AppWidgetManager.getInstance(context);
+        manager.updateAppWidget(widget, remoteViews);
+        //Release the lock
+        wakeLock.release();
+
     }
 
 }

@@ -1,12 +1,14 @@
 package com.example.damien.challengeandroidwear.searchinstagramtags;
 
-import android.app.Activity;
 import android.app.ProgressDialog;
 import android.graphics.Bitmap;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.AbsListView;
 import android.widget.AdapterView;
 import android.widget.Button;
@@ -35,7 +37,7 @@ import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.util.ArrayList;
 
-public class SearchTagsActivity extends Activity {
+public class SearchTagsActivity extends Fragment {
 
     private static final String TAG = SearchTagsActivity.class.getSimpleName();
     private static String REQUEST_URL = null;
@@ -49,46 +51,50 @@ public class SearchTagsActivity extends Activity {
     private String actualPagination = "";
     private ArrayList<InstagramObject> listImportedObjects;
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_search_tags);
+    public SearchTagsActivity() {
+    }
 
-        mProgressDialog = new ProgressDialog(this);
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        View rootView = inflater.inflate(R.layout.activity_search_tags, container, false);
+        String text = String.format("Search Tags");
+        getActivity().setTitle(text);
+
+        mProgressDialog = new ProgressDialog(getActivity());
         mProgressDialog.setMessage("Loading...");
 
-        mGoogleClient = new GoogleApiClient.Builder(this)
+        mGoogleClient = new GoogleApiClient.Builder(getActivity())
                 .addApi(Wearable.API)
                 .build();
 
-        mListView = (ListView) findViewById(R.id.scrollable_list_view);
+        mListView = (ListView) rootView.findViewById(R.id.scrollable_list_view);
         mListView.setOnScrollListener(new EndlessScroll());
         mListView.setOnItemClickListener(new OnItemClickObject());
 
-        mRequestButton = (Button) findViewById(R.id.connect_button);
+        mRequestButton = (Button) rootView.findViewById(R.id.connect_button);
         mRequestButton.setOnClickListener(new OnClickConnectInstragram());
 
         REQUEST_URL = "https://api.instagram.com/v1/tags/" + SearchConstants.TAGR +
                 "/media/recent?client_id=" + SearchConstants.CLIENT_ID + "&count=" + SearchConstants.COUNT;
 
+        return rootView;
     }
 
     @Override
-    protected void onStart() {
+    public void onStart() {
         super.onStart();
         mGoogleClient.connect();
     }
 
     @Override
-    protected void onDestroy() {
-        mListAdapter.imageLoader.clearCache();
+    public void onDestroy() {
         mListView.setAdapter(null);
         mGoogleClient.disconnect();
         super.onDestroy();
     }
 
     @Override
-    protected void onStop() {
+    public void onStop() {
         if (null != mGoogleClient && mGoogleClient.isConnected()) {
             mGoogleClient.disconnect();
         }
@@ -125,7 +131,7 @@ public class SearchTagsActivity extends Activity {
         @Override
         public void onClick(View view) {
             listImportedObjects = new ArrayList<>();
-            mListAdapter = new CustomListAdapter(getApplicationContext(), listImportedObjects);
+            mListAdapter = new CustomListAdapter(getActivity(), listImportedObjects);
             mListView.setAdapter(mListAdapter);
             //Request from URL
             GetRequestItemsTask getItemsTask = new GetRequestItemsTask();
@@ -233,7 +239,7 @@ public class SearchTagsActivity extends Activity {
             dataMap.putString("username", username);
             dataMap.putString("description", description);
 
-            ImageLoader image = new ImageLoader(getApplicationContext());
+            ImageLoader image = new ImageLoader(getActivity());
             Bitmap bitmap = image.getBitmap(urlImage);
             Asset asset = toAsset(bitmap);
             dataMap.putAsset("url_image", asset);
@@ -257,14 +263,28 @@ public class SearchTagsActivity extends Activity {
         @Override
         protected Void doInBackground(Void... params) {
             NodeApi.GetConnectedNodesResult nodes = Wearable.NodeApi.getConnectedNodes(mGoogleClient).await();
+            if (nodes.getNodes().size() == 0) {
+                getActivity().runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        Toast.makeText(getActivity(), "No Wearable near", Toast.LENGTH_LONG).show();
+                    }
+                });
+                return null;
+            }
             for (Node node : nodes.getNodes()) {
                 PutDataMapRequest putData = PutDataMapRequest.create(dataPath);
                 putData.getDataMap().putAll(dataMap);
                 PutDataRequest putRequest = putData.asPutDataRequest();
                 DataApi.DataItemResult result = Wearable.DataApi.putDataItem(mGoogleClient, putRequest).await();
                 if (result.getStatus().isSuccess()) {
+                    getActivity().runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            Toast.makeText(getActivity(), "Data Sent to Wearable", Toast.LENGTH_LONG).show();
+                        }
+                    });
                     Log.v(TAG, "Success sent to: " + node.getDisplayName());
-                    Toast.makeText(getBaseContext(), "Data Sent to Wearable", Toast.LENGTH_LONG).show();
                 } else {
                     Log.v(TAG, "ERROR: failed to send DataMap");
                 }

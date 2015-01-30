@@ -1,5 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <!-- From: file:/C:/Users/Damien/AndroidStudioProjects/ChallengeAndroidWear/mobile/src/main/res/values-v21/styles.xml -->
+    <eat-comment/>
+    <dimen name="toolbar_elevation">5dp</dimen>
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="colorPrimary">@color/secondary_color</item>
+        <item name="colorPrimaryDark">@color/primary_color</item>
+        <item name="android:textColorPrimary">@color/text_color</item>
+        <item name="drawerArrowStyle">@style/DrawerArrowStyle</item>
+
+        <item name="android:windowDrawsSystemBarBackgrounds">true</item>
+        <item name="android:statusBarColor">@android:color/transparent</item>
+
+        <item name="android:windowBackground">@color/white</item>
+        <item name="android:windowContentTransitions">true</item>
+    </style>
     <!-- From: file:/C:/Users/Damien/AndroidStudioProjects/ChallengeAndroidWear/mobile/build/intermediates/exploded-aar/com.android.support/appcompat-v7/21.0.3/res/values-v21/values.xml -->
     <eat-comment/>
     <style name="Base.TextAppearance.AppCompat" parent="android:TextAppearance.Material"/>
@@ -258,6 +273,12 @@
     <style name="Digits_default" parent="@android:style/Theme.Material.Light">
         <item name="dgts__accentColor">?android:attr/colorAccent</item>
     </style>
+    <!-- From: file:/C:/Users/Damien/AndroidStudioProjects/ChallengeAndroidWear/mobile/src/main/res/values-v21/styles.xml -->
+    <eat-comment/>
+    <style name="DrawerArrowStyle" parent="Widget.AppCompat.DrawerArrowToggle">
+        <item name="spinBars">true</item>
+        <item name="color">@color/white</item>
+    </style>
     <!-- From: file:/C:/Users/Damien/AndroidStudioProjects/ChallengeAndroidWear/mobile/build/intermediates/exploded-aar/com.android.support/appcompat-v7/21.0.3/res/values-v21/values.xml -->
     <eat-comment/>
     <style name="Platform.AppCompat" parent="android:Theme.Material">
@@ -275,5 +296,12 @@
     <style name="Platform.AppCompat.Light.Dialog" parent="android:Theme.Material.Light.Dialog">
         <item name="android:windowNoTitle">true</item>
         <item name="android:windowActionBar">false</item>
+    </style>
+    <!-- From: file:/C:/Users/Damien/AndroidStudioProjects/ChallengeAndroidWear/mobile/src/main/res/values-v21/styles.xml -->
+    <eat-comment/>
+    <style name="ToolBarStyle" parent="">
+        <item name="android:elevation">@dimen/toolbar_elevation</item>
+        <item name="popupTheme">@style/ThemeOverlay.AppCompat.Light</item>
+        <item name="theme">@style/ThemeOverlay.AppCompat.Dark.ActionBar</item>
     </style>
 </resources>

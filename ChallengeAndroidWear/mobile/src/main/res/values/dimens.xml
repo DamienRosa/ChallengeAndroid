@@ -5,4 +5,5 @@
     <dimen name="space_16">16dp</dimen>
     <dimen name="space_8">8dp</dimen>
     <dimen name="medium_edit_text_size">100dp</dimen>
+    <dimen name="navigation_drawer_width">304dp</dimen>
 </resources>

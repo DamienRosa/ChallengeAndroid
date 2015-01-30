@@ -14,5 +14,13 @@
     <string name="description_string">description</string>
     <string name="cancel_button_string">Cancel</string>
     <string name="add_button_string">Add</string>
+    <string name="loading_string">Loading…</string>
+    <string name="add_alarm_string">Add Alarm</string>
+
+    <string-array name="navigation_drawer_items">
+        <item>SEARCH TAGS</item>
+        <item>DESIGNER FINGER</item>
+        <item>FREE FEATURE</item>
+    </string-array>
 
 </resources>

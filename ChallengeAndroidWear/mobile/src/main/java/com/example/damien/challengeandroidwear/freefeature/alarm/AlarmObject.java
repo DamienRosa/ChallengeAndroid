@@ -16,7 +16,7 @@ public class AlarmObject {
     }
 
     public AlarmObject() {
-
+        // nothing
     }
 
     public long getId() {
@@ -55,7 +55,12 @@ public class AlarmObject {
         this.enable = enable;
     }
 
-    public void setID(long id) {
-        this.id = id;
+    public void setID(long ID) {
+        this.id = ID;
+    }
+
+    @Override
+    public String toString() {
+        return hourOfDay + ":" + minute + "\n" + description;
     }
 }

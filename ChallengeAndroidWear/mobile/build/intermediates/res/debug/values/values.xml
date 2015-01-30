@@ -1,5 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources xmlns:ns1="urn:oasis:names:tc:xliff:document:1.2">
+    <!-- From: file:/C:/Users/Damien/AndroidStudioProjects/ChallengeAndroidWear/mobile/src/main/res/values/strings.xml -->
+    <eat-comment/>
+    <string-array name="navigation_drawer_items">
+        <item>SEARCH TAGS</item>
+        <item>DESIGNER FINGER</item>
+        <item>FREE FEATURE</item>
+    </string-array>
     <!-- From: file:/C:/Users/Damien/AndroidStudioProjects/ChallengeAndroidWear/mobile/build/intermediates/exploded-aar/com.digits.sdk.android/digits/1.1.0/res/values/values.xml -->
     <eat-comment/>
     <attr format="reference|color" name="dgts__accentColor"/>
@@ -69,8 +76,18 @@
     <color name="material_blue_grey_950">#ff21272b</color>
     <color name="material_deep_teal_200">#ff80cbc4</color>
     <color name="material_deep_teal_500">#ff009688</color>
+    <!-- From: file:/C:/Users/Damien/AndroidStudioProjects/ChallengeAndroidWear/mobile/src/main/res/values/color.xml -->
+    <eat-comment/>
+    <color name="primary_color">#67BE68</color>
+    <!-- From: file:/C:/Users/Damien/AndroidStudioProjects/ChallengeAndroidWear/mobile/build/intermediates/exploded-aar/com.android.support/appcompat-v7/21.0.3/res/values/values.xml -->
+    <eat-comment/>
     <color name="primary_dark_material_dark">#ff000000</color>
     <color name="primary_dark_material_light">#ff757575</color>
+    <!-- From: file:/C:/Users/Damien/AndroidStudioProjects/ChallengeAndroidWear/mobile/src/main/res/values/color.xml -->
+    <eat-comment/>
+    <color name="primary_light_color">#95D895</color>
+    <!-- From: file:/C:/Users/Damien/AndroidStudioProjects/ChallengeAndroidWear/mobile/build/intermediates/exploded-aar/com.android.support/appcompat-v7/21.0.3/res/values/values.xml -->
+    <eat-comment/>
     <color name="primary_material_dark">#ff212121</color>
     <color name="primary_material_light">#ffbdbdbd</color>
     <color name="primary_text_default_material_dark">#ffffffff</color>
@@ -79,12 +96,20 @@
     <color name="primary_text_disabled_material_light">#39000000</color>
     <color name="ripple_material_dark">#40ffffff</color>
     <color name="ripple_material_light">#40000000</color>
+    <!-- From: file:/C:/Users/Damien/AndroidStudioProjects/ChallengeAndroidWear/mobile/src/main/res/values/color.xml -->
+    <eat-comment/>
+    <color name="secondary_color">#FFFFFF</color>
+    <!-- From: file:/C:/Users/Damien/AndroidStudioProjects/ChallengeAndroidWear/mobile/build/intermediates/exploded-aar/com.android.support/appcompat-v7/21.0.3/res/values/values.xml -->
+    <eat-comment/>
     <color name="secondary_text_default_material_dark">#b3ffffff</color>
     <color name="secondary_text_default_material_light">#8a000000</color>
     <color name="secondary_text_disabled_material_dark">#36ffffff</color>
     <color name="secondary_text_disabled_material_light">#24000000</color>
     <color name="switch_thumb_normal_material_dark">#ffbdbdbd</color>
     <color name="switch_thumb_normal_material_light">#fff1f1f1</color>
+    <!-- From: file:/C:/Users/Damien/AndroidStudioProjects/ChallengeAndroidWear/mobile/src/main/res/values/color.xml -->
+    <eat-comment/>
+    <color name="text_color">#333333</color>
     <!-- From: file:/C:/Users/Damien/AndroidStudioProjects/ChallengeAndroidWear/mobile/build/intermediates/exploded-aar/com.twitter.sdk.android/twitter-core/1.1.1/res/values/values.xml -->
     <eat-comment/>
     <color name="tw__blue_default">#FF5BAAF4</color>
@@ -212,6 +237,7 @@
     <!-- From: file:/C:/Users/Damien/AndroidStudioProjects/ChallengeAndroidWear/mobile/src/main/res/values/dimens.xml -->
     <eat-comment/>
     <dimen name="medium_edit_text_size">100dp</dimen>
+    <dimen name="navigation_drawer_width">304dp</dimen>
     <dimen name="space_16">16dp</dimen>
     <dimen name="space_48">48dp</dimen>
     <dimen name="space_56">56dp</dimen>
@@ -339,6 +365,7 @@
     <!-- From: file:/C:/Users/Damien/AndroidStudioProjects/ChallengeAndroidWear/mobile/src/main/res/values/strings.xml -->
     <eat-comment/>
     <string name="action_settings">Settings</string>
+    <string name="add_alarm_string">Add Alarm</string>
     <string name="add_button_string">Add</string>
     <string name="app_name">ChallengeAndroidWear</string>
     <string name="cancel_button_string">Cancel</string>
@@ -346,7 +373,7 @@
     <string name="color_edit_text_string">color</string>
     <!-- From: file:/C:/Users/Damien/AndroidStudioProjects/ChallengeAndroidWear/mobile/src/main/res/values/com_crashlytics_export_strings.xml -->
     <eat-comment/>
-    <string name="com.crashlytics.android.build_id" translatable="false">34e0ba7e-eca1-4638-befe-6f1c9af09fa9</string>
+    <string name="com.crashlytics.android.build_id" translatable="false">54903e23-7bf8-440b-886e-8bb3c6828a9e</string>
     <!-- From: file:/C:/Users/Damien/AndroidStudioProjects/ChallengeAndroidWear/mobile/build/intermediates/exploded-aar/com.google.android.gms/play-services/6.5.87/res/values/common_strings.xml -->
     <eat-comment/>
     <string name="common_android_wear_notification_needs_update_text">An application requires an update to the Android Wear app.</string>
@@ -447,6 +474,7 @@
     <string name="kit_name">Twitter</string>
     <!-- From: file:/C:/Users/Damien/AndroidStudioProjects/ChallengeAndroidWear/mobile/src/main/res/values/strings.xml -->
     <eat-comment/>
+    <string name="loading_string">Loading…</string>
     <string name="request_button_string">Request</string>
     <string name="save_button_string">Save</string>
     <string name="set_button_string">Set</string>
@@ -485,8 +513,14 @@
     <string name="wallet_buy_button_place_holder" translation_description="Text on a button that allows a user to make a payment with Google Wallet [CHAR LIMIT=30]">Buy with Google</string>
     <!-- From: file:/C:/Users/Damien/AndroidStudioProjects/ChallengeAndroidWear/mobile/src/main/res/values/styles.xml -->
     <eat-comment/>
-    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
         <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/secondary_color</item>
+        <item name="colorPrimaryDark">@color/primary_color</item>
+        <item name="android:textColorPrimary">@color/text_color</item>
+        <item name="drawerArrowStyle">@style/DrawerArrowStyle</item>
+
+        <item name="android:windowBackground">@color/white</item>
     </style>
     <!-- From: file:/C:/Users/Damien/AndroidStudioProjects/ChallengeAndroidWear/mobile/build/intermediates/exploded-aar/com.android.support/appcompat-v7/21.0.3/res/values/values.xml -->
     <eat-comment/>
@@ -1247,6 +1281,12 @@
     <style name="Digits_default" parent="@android:style/Theme.Light">
         <item name="dgts__accentColor">@color/dgts__default_accent</item>
     </style>
+    <!-- From: file:/C:/Users/Damien/AndroidStudioProjects/ChallengeAndroidWear/mobile/src/main/res/values/styles.xml -->
+    <eat-comment/>
+    <style name="DrawerArrowStyle" parent="Widget.AppCompat.DrawerArrowToggle">
+        <item name="spinBars">true</item>
+        <item name="color">@android:color/white</item>
+    </style>
     <!-- From: file:/C:/Users/Damien/AndroidStudioProjects/ChallengeAndroidWear/mobile/build/intermediates/exploded-aar/com.android.support/appcompat-v7/21.0.3/res/values/values.xml -->
     <eat-comment/>
     <style name="Platform.AppCompat" parent="android:Theme">
@@ -1492,6 +1532,12 @@
     <style name="ThemeOverlay.AppCompat.Dark" parent="Base.ThemeOverlay.AppCompat.Dark"/>
     <style name="ThemeOverlay.AppCompat.Dark.ActionBar" parent="Base.ThemeOverlay.AppCompat.Dark.ActionBar"/>
     <style name="ThemeOverlay.AppCompat.Light" parent="Base.ThemeOverlay.AppCompat.Light"/>
+    <!-- From: file:/C:/Users/Damien/AndroidStudioProjects/ChallengeAndroidWear/mobile/src/main/res/values/styles.xml -->
+    <eat-comment/>
+    <style name="ToolBarStyle" parent="">
+        <item name="popupTheme">@style/ThemeOverlay.AppCompat.Light</item>
+        <item name="theme">@style/ThemeOverlay.AppCompat.Dark.ActionBar</item>
+    </style>
     <!-- From: file:/C:/Users/Damien/AndroidStudioProjects/ChallengeAndroidWear/mobile/build/intermediates/exploded-aar/com.google.android.gms/play-services/6.5.87/res/values/wallet_styles.xml -->
     <eat-comment/>
     <style name="WalletFragmentDefaultButtonTextAppearance">

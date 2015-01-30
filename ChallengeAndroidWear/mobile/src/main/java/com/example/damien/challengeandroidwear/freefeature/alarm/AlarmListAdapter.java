@@ -1,5 +1,6 @@
 package com.example.damien.challengeandroidwear.freefeature.alarm;
 
+import android.app.Activity;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,17 +12,24 @@ import android.widget.Switch;
 import android.widget.TextView;
 
 import com.example.damien.challengeandroidwear.R;
-import com.example.damien.challengeandroidwear.freefeature.FreeFeatureActivity;
 
 import java.util.ArrayList;
 
 public class AlarmListAdapter extends BaseAdapter {
+
+    AdapterInterface adapterInterface;
     private Context context;
     private ArrayList<AlarmObject> listAlarmObj;
 
     public AlarmListAdapter(Context context, ArrayList<AlarmObject> list) {
         this.context = context;
         this.listAlarmObj = list;
+    }
+
+    public AlarmListAdapter(Context context, ArrayList<AlarmObject> list, AdapterInterface adapterInterface) {
+        this.context = context;
+        this.listAlarmObj = list;
+        this.adapterInterface = adapterInterface;
     }
 
     @Override
@@ -73,17 +81,23 @@ public class AlarmListAdapter extends BaseAdapter {
         this.listAlarmObj = alarms;
     }
 
+    public interface AdapterInterface {
+        public void setAlarmEnabled(long id, boolean isChecked);
+
+        public void deleteAlarm(long id);
+    }
+
     private class onCheckSwitch implements CompoundButton.OnCheckedChangeListener {
         @Override
         public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-            ((FreeFeatureActivity) context).setAlarmEnabled((Long) buttonView.getTag(), isChecked);
+            adapterInterface.setAlarmEnabled((Long) buttonView.getTag(), isChecked);
         }
     }
 
     private class OnDeleteClick implements View.OnClickListener {
         @Override
         public void onClick(View v) {
-            ((FreeFeatureActivity) context).deleteAlarm((Long) v.getTag());
+            adapterInterface.deleteAlarm((Long) v.getTag());
         }
     }
 }

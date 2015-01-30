@@ -6,6 +6,6 @@ public class FreeFeatureConstants {
     public static final String TWITTER_KEY = "UnCMI49DZrDWYsxqtHKOg728V";
     public static final String TWITTER_SECRET = "Kh9jW4SEDoDOVHXAVJf8QwZyah44nYxj1sOSNF8wXuzvzDdiUd";
 
-    public static final int REQUEST_ALARM = 0;
-    public static final int REQUEST_CANCEL = 1;
+    public static final int REQUEST_ALARM = 100;
+    public static final int REQUEST_CANCEL = 101;
 }

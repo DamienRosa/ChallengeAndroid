@@ -35,7 +35,7 @@ public class AlarmDataBase extends SQLiteOpenHelper {
         alarm.setDescription(c.getString(c.getColumnIndex(Alarm.COLUMN_NAME_ALARM_DESCRIPTION)));
         alarm.setHourOfDay(c.getInt(c.getColumnIndex(Alarm.COLUMN_NAME_ALARM_TIME_HOUR)));
         alarm.setMinute(c.getInt(c.getColumnIndex(Alarm.COLUMN_NAME_ALARM_TIME_MINUTE)));
-        alarm.setEnable(c.getInt(c.getColumnIndex(Alarm.COLUMN_NAME_ALARM_ENABLED)) == 0 ? false : true);
+        alarm.setEnable(c.getInt(c.getColumnIndex(Alarm.COLUMN_NAME_ALARM_ENABLED)) != 0);
         return alarm;
     }
 
@@ -71,8 +71,12 @@ public class AlarmDataBase extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getReadableDatabase();
         String select = "SELECT * FROM " + Alarm.TABLE_NAME + " WHERE " + Alarm._ID + " = " + l;
         Cursor c = db.rawQuery(select, null);
-        if (c.moveToNext()) {
-            return populate(c);
+        try {
+            if (c.moveToNext()) {
+                return populate(c);
+            }
+        } finally {
+            c.close();
         }
         return null;
     }
@@ -84,14 +88,16 @@ public class AlarmDataBase extends SQLiteOpenHelper {
         String select = "SELECT * FROM " + Alarm.TABLE_NAME;
         Cursor c = db.rawQuery(select, null);
         ArrayList<AlarmObject> alarms = new ArrayList<>();
-        while (c.moveToNext()) {
-            alarms.add(populate(c));
+        try {
+            while (c.moveToNext()) {
+                alarms.add(populate(c));
+            }
+        } finally {
+            c.close();
         }
-
         if (!alarms.isEmpty()) {
             return alarms;
         }
-
         return null;
     }
 

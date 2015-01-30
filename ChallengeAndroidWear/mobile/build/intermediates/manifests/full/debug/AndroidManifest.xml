@@ -27,11 +27,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name="com.example.damien.challengeandroidwear.searchinstagramtags.SearchTagsActivity" />
-        <activity android:name="com.example.damien.challengeandroidwear.freefeature.FreeFeatureActivity" />
-        <activity android:name="com.example.damien.challengeandroidwear.designerfinger.DesignerFingerActivity" />
         <activity android:name="com.example.damien.challengeandroidwear.freefeature.AddAlarmActivity" />
-        <activity android:name="com.example.damien.challengeandroidwear.freefeature.alarm.AlarmScreen" />
+        <activity android:name="com.example.damien.challengeandroidwear.freefeature.AlarmScreenActivity" />
+        <activity android:name="com.example.damien.challengeandroidwear.freefeature.AlarmWidgetActivity" />
 
         <service
             android:name="com.example.damien.challengeandroidwear.freefeature.alarm.AlarmService"
@@ -41,6 +39,15 @@
             <intent-filter>
                 <action android:name="android.intent.action.BOOT_COMPLETED" />
             </intent-filter>
+        </receiver>
+        <receiver android:name="com.example.damien.challengeandroidwear.freefeature.AlarmWidgetProvider" >
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+            </intent-filter>
+
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/alarm_widget" />
         </receiver>
 
         <meta-data

@@ -1,15 +1,14 @@
 package com.example.damien.challengeandroidwear.freefeature;
 
-import android.app.Activity;
-import android.content.ContextWrapper;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.CompoundButton;
 import android.widget.ListView;
-import android.widget.Switch;
 import android.widget.Toast;
 
 import com.example.damien.challengeandroidwear.R;
@@ -21,49 +20,62 @@ import com.twitter.sdk.android.Twitter;
 import com.twitter.sdk.android.core.Callback;
 import com.twitter.sdk.android.core.Result;
 import com.twitter.sdk.android.core.TwitterAuthConfig;
+import com.twitter.sdk.android.core.TwitterAuthToken;
 import com.twitter.sdk.android.core.TwitterException;
 import com.twitter.sdk.android.core.TwitterSession;
+import com.twitter.sdk.android.core.identity.TwitterAuthClient;
 import com.twitter.sdk.android.core.identity.TwitterLoginButton;
 
 import io.fabric.sdk.android.Fabric;
 
-public class FreeFeatureActivity extends Activity {
+public class FreeFeatureActivity extends Fragment implements AlarmListAdapter.AdapterInterface {
 
     private static final String TAG = FreeFeatureActivity.class.getSimpleName();
-
+    TwitterAuthClient authClient;
     private TwitterLoginButton mTwitterLoginButton;
     private Button mAddAlarmButton;
     private ListView mAlarmListView;
     private AlarmListAdapter mAlarmListAdapter;
     private AlarmDataBase alarmDataBase;
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
 
-        TwitterAuthConfig authConfig = new TwitterAuthConfig(FreeFeatureConstants.TWITTER_KEY, FreeFeatureConstants.TWITTER_SECRET);
-        Fabric.with(this, new Twitter(authConfig));
-
-        setContentView(R.layout.activity_free_feature);
-
-        alarmDataBase = new AlarmDataBase(this);
-
-        mTwitterLoginButton = (TwitterLoginButton) findViewById(R.id.twitter_login_button);
-        mTwitterLoginButton.setCallback(new CallbackTwitter());
-
-        mAddAlarmButton = (Button) findViewById(R.id.add_alarm_button);
-        mAddAlarmButton.setOnClickListener(new OnClickNewAlarm());
-
-        mAlarmListView = (ListView) findViewById(R.id.alarms_list_view);
-        mAlarmListAdapter = new AlarmListAdapter(this, alarmDataBase.getAlarms());
-        mAlarmListView.setAdapter(mAlarmListAdapter);
-
+    public FreeFeatureActivity() {
     }
 
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+
+        TwitterAuthConfig authConfig = new TwitterAuthConfig(FreeFeatureConstants.TWITTER_KEY, FreeFeatureConstants.TWITTER_SECRET);
+        Fabric.with(getActivity(), new Twitter(authConfig));
+
+        View rootView = inflater.inflate(R.layout.activity_free_feature, container, false);
+        String text = String.format("Free Feature");
+        getActivity().setTitle(text);
+
+        alarmDataBase = new AlarmDataBase(getActivity());
+
+/*
+        mTwitterLoginButton = (TwitterLoginButton) rootView.findViewById(R.id.twitter_login_button);
+        mTwitterLoginButton.setCallback(new CallbackTwitter());
+*/
+        mAddAlarmButton = (Button) rootView.findViewById(R.id.add_alarm_button);
+        mAddAlarmButton.setOnClickListener(new OnClickNewAlarm());
+
+        mAlarmListView = (ListView) rootView.findViewById(R.id.alarms_list_view);
+        mAlarmListAdapter = new AlarmListAdapter(getActivity(), alarmDataBase.getAlarms(), this);
+        mAlarmListView.setAdapter(mAlarmListAdapter);
+
+        //CHANGE
+        mAddAlarmButton.setVisibility(View.VISIBLE);
+        mAlarmListView.setVisibility(View.VISIBLE);
+        return rootView;
+    }
+
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
+
         if (requestCode == FreeFeatureConstants.REQUEST_ALARM && data != null) {
-            AlarmManagerBroadcast.cancelAlarms(this);
+            AlarmManagerBroadcast.cancelAlarms(getActivity());
 
             int hour = data.getIntExtra("hour", 0);
             int minute = data.getIntExtra("minute", 0);
@@ -73,64 +85,63 @@ public class FreeFeatureActivity extends Activity {
             mAlarmListAdapter.setAlarms(alarmDataBase.getAlarms());
             mAlarmListAdapter.notifyDataSetChanged();
 
-            AlarmManagerBroadcast.setAlarms(this);
+            AlarmManagerBroadcast.setAlarms(getActivity());
 
-        } else if (requestCode == FreeFeatureConstants.REQUEST_CANCEL) {
-            //nothing
-        } else {
-            mTwitterLoginButton.onActivityResult(requestCode, resultCode, data);
         }
-
     }
 
-    //delete alarm
-    public void deleteAlarm(long l) {
+    @Override
+    public void setAlarmEnabled(long id, boolean isChecked) {
+        AlarmManagerBroadcast.cancelAlarms(getActivity());
 
-        AlarmManagerBroadcast.cancelAlarms(this);
+        AlarmObject obj = alarmDataBase.getAlarm(id);
+        obj.setEnable(isChecked);
+        alarmDataBase.updateAlarm(obj);
 
-        alarmDataBase.deleteAlarm(l);
+        AlarmManagerBroadcast.setAlarms(getActivity());
+    }
+
+    @Override
+    public void deleteAlarm(long id) {
+
+        AlarmManagerBroadcast.cancelAlarms(getActivity());
+
+        alarmDataBase.deleteAlarm(id);
         mAlarmListAdapter.setAlarms(alarmDataBase.getAlarms());
         mAlarmListAdapter.notifyDataSetChanged();
 
         if (mAlarmListAdapter.getCount() != 0)
-            AlarmManagerBroadcast.setAlarms(this);
+            AlarmManagerBroadcast.setAlarms(getActivity());
 
-        Toast.makeText(this, "Alarm Deleted", Toast.LENGTH_LONG).show();
+        Toast.makeText(getActivity(), "Alarm Deleted", Toast.LENGTH_LONG).show();
     }
 
-    //set enable
-    public void setAlarmEnabled(long l, boolean isChecked) {
-
-        AlarmManagerBroadcast.cancelAlarms(this);
-
-        AlarmObject obj = alarmDataBase.getAlarm(l);
-        obj.setEnable(isChecked);
-        alarmDataBase.updateAlarm(obj);
-
-        AlarmManagerBroadcast.setAlarms(this);
-    }
 
     private class CallbackTwitter extends Callback<TwitterSession> {
         @Override
         public void success(Result<TwitterSession> twitterSessionResult) {
-            Log.d(TAG, twitterSessionResult.data.getUserName());
+            TwitterSession session =
+                    Twitter.getSessionManager().getActiveSession();
+            Log.d(TAG, session.getUserName());
+            TwitterAuthToken authToken = session.getAuthToken();
+            String token = authToken.token;
+            String secret = authToken.secret;
 
             mTwitterLoginButton.setVisibility(View.INVISIBLE);
             mAddAlarmButton.setVisibility(View.VISIBLE);
             mAlarmListView.setVisibility(View.VISIBLE);
-
         }
 
         @Override
         public void failure(TwitterException e) {
-            Log.d(TAG, e.getMessage());
+            Toast.makeText(getActivity(), e.getMessage(), Toast.LENGTH_LONG).show();
         }
     }
 
     private class OnClickNewAlarm implements View.OnClickListener {
         @Override
         public void onClick(View v) {
-            Intent addAlarmIntent = new Intent(FreeFeatureActivity.this, AddAlarmActivity.class);
+            Intent addAlarmIntent = new Intent(getActivity(), AddAlarmActivity.class);
             startActivityForResult(addAlarmIntent, FreeFeatureConstants.REQUEST_ALARM);
         }
     }

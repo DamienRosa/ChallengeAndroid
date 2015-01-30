@@ -3,24 +3,23 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
-
+<!--
     <com.twitter.sdk.android.core.identity.TwitterLoginButton
         android:id="@+id/twitter_login_button"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
-
+-->
     <Button
         android:id="@+id/add_alarm_button"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:visibility="invisible"
-        android:text="Add Alarm" />
+        android:text="@string/add_alarm_string" />
 
     <ListView
         android:id="@+id/alarms_list_view"
         android:layout_width="match_parent"
         android:visibility="invisible"
         android:layout_height="wrap_content">
-
     </ListView>
 </LinearLayout>
