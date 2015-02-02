@@ -373,7 +373,7 @@
     <string name="color_edit_text_string">color</string>
     <!-- From: file:/C:/Users/Damien/AndroidStudioProjects/ChallengeAndroidWear/mobile/src/main/res/values/com_crashlytics_export_strings.xml -->
     <eat-comment/>
-    <string name="com.crashlytics.android.build_id" translatable="false">54903e23-7bf8-440b-886e-8bb3c6828a9e</string>
+    <string name="com.crashlytics.android.build_id" translatable="false">8571da40-4bc4-41aa-a5e3-fc17c5b7808d</string>
     <!-- From: file:/C:/Users/Damien/AndroidStudioProjects/ChallengeAndroidWear/mobile/build/intermediates/exploded-aar/com.google.android.gms/play-services/6.5.87/res/values/common_strings.xml -->
     <eat-comment/>
     <string name="common_android_wear_notification_needs_update_text">An application requires an update to the Android Wear app.</string>

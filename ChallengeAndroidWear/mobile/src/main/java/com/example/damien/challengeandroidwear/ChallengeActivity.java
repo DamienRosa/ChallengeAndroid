@@ -25,6 +25,7 @@ public class ChallengeActivity extends ActionBarActivity {
     private ActionBarDrawerToggle mActionBarDrawerToggle;
     private Toolbar mToolbar;
     private String[] mNavigationDrawerItems;
+    private int actualPosition = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,13 +49,20 @@ public class ChallengeActivity extends ActionBarActivity {
         getSupportActionBar().setHomeButtonEnabled(true);
 
         if (savedInstanceState == null) {
-            selectItem(0);
+            selectItem(actualPosition);
         }
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        selectItem(actualPosition);
     }
 
     private void selectItem(int position) {
         Fragment fragment = null;
         Bundle args = new Bundle();
+        actualPosition = position;
         switch (position) {
             case 0:
                 fragment = new SearchTagsActivity();

@@ -130,6 +130,9 @@ public class AlarmManagerBroadcast extends BroadcastReceiver {
 
         AlarmDataBase alarmDB = new AlarmDataBase(context);
         ArrayList<AlarmObject> alarmsList = alarmDB.getAlarms();
+        if (alarmsList == null){
+            return;
+        }
         if (alarmsList.size() >= 2){
             remoteViews.setTextViewText(R.id.alarm1_text_view, alarmsList.get(0).toString());
             remoteViews.setTextViewText(R.id.alarm2_text_view, alarmsList.get(1).toString());
